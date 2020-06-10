@@ -18,7 +18,7 @@ describe('changeCase', () => {
 
 describe('filterNonUnique', () => {
   it('should filter out non-unique values in an array', () => {
-    expect(filterNonUnique([1, 2, 2, 3, 4, 4, 5])).toEqual([1, 3, 5]);
+    expect(filterNonUnique([1, 2, 2, 2, 3, 4, 4, 5])).toEqual([1, 3, 5]);
     expect(filterNonUnique([1, 2, 3, 4])).toEqual([1, 2, 3, 4]);
   });
 });
