@@ -18,3 +18,7 @@ _Read:_
 _Watch:_
 
 - [Flexbox](https://www.youtube.com/watch?v=JJSoEo8JSnc) (~20min)
+
+_Play:_
+
+- [Flexbox froggy](https://flexboxfroggy.com/)
