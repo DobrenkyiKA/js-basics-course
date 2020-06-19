@@ -9,7 +9,7 @@ import {
   formatDate,
 } from './index';
 
-describe.skip('Module 1', () => {
+describe('Module 1', () => {
   describe('changeCase', () => {
     it('should change the capitalization of all letters in a given string', () => {
       expect(changeCase('21century')).toBe('21CENTURY');
