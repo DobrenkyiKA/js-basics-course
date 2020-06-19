@@ -2,9 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const config = require('./config')
+const argv = require('minimist')(process.argv.slice(2));
+const modulePath = config.modulesPaths[argv.module]
 
-config = {
-  entry: { main: './src/index.js' },
+module.exports = {
+  entry: { main: `${modulePath}/main.js` },
 
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -36,15 +39,13 @@ config = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: `${modulePath}/index.html`,
       filename: 'index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: './css/[name].css',
+      filename: `${modulePath}/css/[name].css`,
     }),
   ],
 
   devtool: 'source-map',
 };
-
-module.exports = config;
