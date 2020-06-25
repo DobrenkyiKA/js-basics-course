@@ -7,7 +7,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const modulePath = config.modulesPaths[argv.module]
 
 module.exports = {
-  entry: { main: `${modulePath}/main.js` },
+  entry: { main: `${modulePath}/index.js` },
 
   output: {
     path: path.resolve(__dirname, './dist'),
