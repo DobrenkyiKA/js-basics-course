@@ -26,4 +26,4 @@
         *  For modules 6,8,9 there is no exercises
 1. Commit and push completed exercises
 1. Create merge request to ```develop``` branch and assign it to mentor
-1. 
+1. Mentor will check and leave comments in will merge request and merge branch when exercises completed correctly
