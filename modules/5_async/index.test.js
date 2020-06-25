@@ -94,36 +94,41 @@ describe.skip('Module 5 Async', () => {
 
   describe('Fibonacci', () => {
     it('should return fibonacci sequence', () => {
-      expect(fibonacci(10)).toEqual([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
+      expect([...fibonacci(10)]).toEqual([0, 1, 1, 2, 3, 5, 8, 13, 21, 34]);
     });
   });
 
-  // Tests not written yet
-  // describe('Generator helper', () => {
-  //   it('should take a generator function and invoke it step by step', async () => {
-  //     const asyncTask1 = () => new Promise((resolve) => setTimeout(() => resolve('first resolved'), 100));
-  //     const asyncTask2 = () => new Promise((resolve) => setTimeout(() => resolve('second resolved'), 100));
-  //     const asyncTask3 = () => new Promise((resolve, reject) => setTimeout(() => reject('third rejected'), 100));
-  //     console.log('invoke helper')
-  //
-  //     helper(function* main() {
-  //       try {
-  //         const a = yield asyncTask1();
-  //         const b = yield asyncTask2();
-  //         console.log(a);
-  //         console.log(b);
-  //         const c = yield asyncTask3();
-  //       } catch(e) {
-  //         console.log('error happened', e);
-  //       }
-  //     });
-  //
-  //     // → ‘invoke helper’
-  //     // 1000ms after helper invoked → ‘first resolved’
-  //     // 2000ms after helper invoked → ‘second resolved’
-  //     // 3000ms after helper invoked → ‘error happened third rejected’
-  //   });
-  // });
+  describe('Generator helper', () => {
+    it('should take a generator function and invoke it step by step', async () => {
+      const asyncTask1 = () => new Promise((resolve) => setTimeout(() => resolve('first resolved'), 100));
+      const asyncTask2 = () => new Promise((resolve) => setTimeout(() => resolve('second resolved'), 100));
+      const asyncTask3 = () => new Promise((resolve, reject) => setTimeout(() => reject('third rejected'), 100));
+
+      helper(function* main() {
+        try {
+          const a = yield asyncTask1();
+          console.log(a);
+          const b = yield asyncTask2();
+          console.log(b);
+          const c = yield asyncTask3();
+        } catch(e) {
+          console.error('error happened', e);
+        }
+      });
+
+      expect(console.log).not.toBeCalledWith();
+
+      await new Promise((resolve) => setTimeout(resolve, 150));
+      expect(console.log).toBeCalledWith('first resolved');
+      console.log.mockReset();
+
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      expect(console.log).toBeCalledWith('second resolved');
+
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      expect(console.error).toBeCalledWith('error happened', 'third rejected');
+    });
+  });
 
   describe.skip('My Promise (optional)', () => {
     it('should have ability to resolve', () => {
