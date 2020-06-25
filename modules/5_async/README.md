@@ -134,12 +134,12 @@ console.log('invoke helper')
 helper(function* main() { 
   try { 
     const a = yield asyncTask1(); 
-    const b = yield asyncTask2(); 
     console.log(a); 
+    const b = yield asyncTask2(); 
     console.log(b); 
     const c = yield asyncTask3(); 
   } catch(e) { 
-    console.log('error happened', e); 
+    console.error('error happened', e); 
   } 
 }); 
 
