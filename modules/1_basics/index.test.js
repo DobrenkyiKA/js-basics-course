@@ -26,8 +26,8 @@ describe.skip('Module 1', () => {
 
   describe('alphabetSort', () => {
     it('should accept a string type only', () => {
-      expect(() => alphabetSort()).to.throw();
-      expect(() => alphabetSort('Text')).not.to.throw();
+      expect(() => alphabetSort()).toThrow();
+      expect(() => alphabetSort('Text')).not.toThrow();
     });
 
     it('should convert the letters of a given string in alphabetical order', () => {
@@ -65,7 +65,7 @@ describe.skip('Module 1', () => {
   describe('formatDate', () => {
     it('should take parameter of different types and returns date in ‘dd.mm.yy’ format', () => {
       expect(formatDate('2011-10-02')).toEqual('02.10.11');
-      expect(formatDate(1234567890000)).toEqual('14.02.09');
+      expect(formatDate(1234567890000)).toEqual('13.02.09');
       expect(formatDate([2014, 0, 1])).toEqual('01.01.14');
       expect(formatDate(new Date(2014, 0, 1))).toEqual('01.01.14');
     });
