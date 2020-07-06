@@ -50,15 +50,15 @@ describe.skip('Module 3', () => {
 
   describe('Groups', () => {
     it('should has one static method', () => {
-      expect(Groups.from).to.be.an.instanceof(Function);
+      expect(Groups.from).toBeInstanceOf(Function);
     });
 
     it('should be a class which creates an instance with three methods', () => {
       const group = Groups.from([10, 20]);
 
-      expect(group.has).to.be.an.instanceof(Function);
-      expect(group.add).to.be.an.instanceof(Function);
-      expect(group.delete).to.be.an.instanceof(Function);
+      expect(group.has).toBeInstanceOf(Function);
+      expect(group.add).toBeInstanceOf(Function);
+      expect(group.delete).toBeInstanceOf(Function);
     });
 
     describe('has', () => {

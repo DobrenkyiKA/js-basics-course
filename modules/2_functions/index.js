@@ -1,27 +1,27 @@
 /**
  * Currying 
  */
-const mergeWords = () => {};
+export const mergeWords = () => {};
 
 /**
  * Every/Some
  */
-const checkUsersValid = () => {};
+export const checkUsersValid = () => {};
 
 /**
  * Reduce 
  */
-const countWords = () => {};
+export const countWords = () => {};
 
 /**
  * Palindrome 
  */
-const isPalindrome = () => {};
+export const isPalindrome = () => {};
 
 /**
  * Recursion 
  */
-const factorial = () => {};
-const amountToCoins = () => {};
-const repeat = () => {};
-const reduce = () => {};
+export const factorial = () => {};
+export const amountToCoins = () => {};
+export const repeat = () => {};
+export const reduce = () => {};

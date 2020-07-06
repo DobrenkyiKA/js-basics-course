@@ -4,16 +4,16 @@
  * @param {number} x 
  * @param {number} y 
  */
-function Point(x, y) {}
+export class Point {}
 
 /**
  * Speaker and Screamer
  */
-function Speaker() {}
-function Screamer() {}
+export class Speaker {}
+export class Screamer {}
 
 /**
  * The Reading list
  */
-function BookList() {}
-function Book() {}
+export class BookList {}
+export class Book {}

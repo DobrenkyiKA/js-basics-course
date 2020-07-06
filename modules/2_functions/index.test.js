@@ -10,6 +10,14 @@ import {
 } from './index';
 
 describe.skip('Module 2', () => {
+  beforeAll(() => {
+    global.console.log = jest.fn();
+  });
+
+  afterEach(() => {
+    console.log.mockReset();
+  });
+  
   describe('mergeWords', () => {
     it('should merge words into sentence', () => {
       const result = mergeWords('GNU')('is')('not')('Unix.')();
@@ -84,11 +92,11 @@ describe.skip('Module 2', () => {
 
     describe('repeat', () => {
       it('should take a function as its first argument, a number num as its second argument, then execute the passed in function num times', () => {
-        sinon.spy(console, 'log');
         repeat(() => console.log('Wassup'), 5);
-        const expected = [['Wassup'], ['Wassup'], ['Wassup'], ['Wassup'], ['Wassup']];
-
-        expect(console.log.args).toEqual(expected);
+        const expected = ['Wassup', 'Wassup', 'Wassup', 'Wassup', 'Wassup'];
+        expected.forEach((expectedValue, i) => {
+          expect(console.log).toHaveBeenNthCalledWith(i + 1, expectedValue);
+        })
       });
     });
 

@@ -1,25 +1,25 @@
 /**
  * Array to List
  */
-const arrayToList = () => {};
-const listToArray = () => {};
+export const arrayToList = () => {};
+export const listToArray = () => {};
 
 /**
  * Keys and values to list
  */
-const getKeyValuePairs = () => {};
+export const getKeyValuePairs = () => {};
 
 /**
  * Invert keys and values
  */
-const invertKeyValue = () => {};
+export const invertKeyValue = () => {};
 
 /**
  * Get all methods from object
  */
-const getAllMethodsFromObject = () => {};
+export const getAllMethodsFromObject = () => {};
 
 /**
  * Groups
  */
-class Groups {}
+export class Groups {}

@@ -7,10 +7,18 @@ import {
 } from './index';
 
 describe.skip('Module 4', () => {
+  beforeAll(() => {
+    global.console.log = jest.fn();
+  });
+
+  afterEach(() => {
+    console.log.mockReset();
+  });
+
   describe('Point', () => {
     it('constructor should throw an error when no params have been passed', () => {
-      expect(() => new Point(1)).to.throw();
-      expect(() => new Point()).to.throw();
+      expect(() => new Point(1)).toThrow();
+      expect(() => new Point()).toThrow();
     });
 
     it('constructor should return object with two fields with passed parameters: x and y', () => {
@@ -23,7 +31,7 @@ describe.skip('Module 4', () => {
     it('object should have plus method', () => {
       const point = new Point(1, 2);
 
-      expect(point.plus).to.be.an.instanceof(Function);
+      expect(point.plus).toBeInstanceOf(Function);
     });
 
     it('plus method should get another Point object and return new one as a sum of first ones', () => {
@@ -39,14 +47,14 @@ describe.skip('Module 4', () => {
   describe('Speaker and Screamer', () => {
     describe('Speaker', () => {
       it('constructor should throw an error when no param has been passed', () => {
-        expect(() => new Speaker()).to.throw();
+        expect(() => new Speaker()).toThrow();
       });
 
       it('should create an object with property "name" and method "speak"', () => {
         const speaker = new Speaker('Michael');
 
         expect(speaker.name).toBe('Michael');
-        expect(speaker.speak).to.be.instanceOf(Function);
+        expect(speaker.speak).toBeInstanceOf(Function);
       });
 
       it('method "speak" should return name of the speaker who says passed text', () => {
@@ -54,7 +62,7 @@ describe.skip('Module 4', () => {
 
         speaker.speak('easy, man');
 
-        expect(console.log.calledWith('Michael says easy, man')).toBe(true);
+        expect(console.log).toBeCalledWith('Michael says easy, man');
       });
     });
 
@@ -64,7 +72,7 @@ describe.skip('Module 4', () => {
 
         screamer.speak('hell yeah');
 
-        expect(console.log.calledWith('Mr. Loud shouts HELL YEAH')).toBe(true);
+        expect(console.log).toBeCalledWith('Mr. Loud shouts HELL YEAH');
       });
     });
   });
@@ -73,7 +81,7 @@ describe.skip('Module 4', () => {
     describe('Book', () => {
       describe('should have next fields', () => {
         it('title (required)', () => {
-          expect(() => new Book({})).to.throw();
+          expect(() => new Book({})).toThrow();
 
           const book = new Book({ title: 'BookTitle' });
 
@@ -106,7 +114,7 @@ describe.skip('Module 4', () => {
       describe('should have next methods', () => {
         describe('.markAsRead()', () => {
           it('should be defined', () => {
-            expect(new Book({ title: 'Title' }).markAsRead).to.be.instanceof(Function);
+            expect(new Book({ title: 'Title' }).markAsRead).toBeInstanceOf(Function);
           });
 
           it('should mark book as read', () => {
@@ -167,7 +175,7 @@ describe.skip('Module 4', () => {
         it('list of all books', () => {
           const list = new BookList();
 
-          expect(list.books).to.be.instanceOf(Array);
+          expect(list.books).toBeInstanceOf(Array);
           expect(list.books).toEqual([]);
         });
       });
@@ -175,15 +183,15 @@ describe.skip('Module 4', () => {
       describe('should have next methods', () => {
         describe('.add()', () => {
           it('should be defined', () => {
-            expect(new BookList().add).to.be.instanceof(Function);
+            expect(new BookList().add).toBeInstanceOf(Function);
           });
 
           it('should be get only Book', () => {
-            expect(() => new BookList().add()).to.throw();
-            expect(() => new BookList().add(123)).to.throw();
+            expect(() => new BookList().add()).toThrow();
+            expect(() => new BookList().add(123)).toThrow();
 
             const book = new Book({ title: 'Title' });
-            expect(() => new BookList().add(book)).to.not.throw();
+            expect(() => new BookList().add(book)).not.toThrow();
           });
 
           it('should add new Book into the list', () => {
@@ -212,13 +220,13 @@ describe.skip('Module 4', () => {
 
             list.add(book2);
             expect(list.books.length).toBe(2);
-            expect(list.currentBook).to.not.eql(book2);
+            expect(list.currentBook).not.toEqual(book2);
           });
         });
 
         describe('.finishCurrentBook()', () => {
           it('should be defined', () => {
-            expect(new BookList().finishCurrentBook).to.be.instanceof(Function);
+            expect(new BookList().finishCurrentBook).toBeInstanceOf(Function);
           });
 
           it('should change current book status as read', () => {
