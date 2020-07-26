@@ -9,7 +9,7 @@ import {
   reduce,
 } from './index';
 
-describe.skip('Module 2', () => {
+describe('Module 2', () => {
   beforeAll(() => {
     global.console.log = jest.fn();
   });
@@ -33,7 +33,7 @@ describe.skip('Module 2', () => {
   ];
 
 // Use checkUsersValid function here
-  const testAllValid = () => {};
+  const testAllValid = checkUsersValid(goodUsers);
 
   describe('checkUsersValid', () => {
     it('#case 1', () => {
